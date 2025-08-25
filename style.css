@@ -1,59 +1,76 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  background: #f4f4f9;
-  color: #333;
+
+:root{
+  --bg:#f3f4f6;
+  --text:#222;
+  --line:#d1d5db;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+.container{max-width:1200px;margin:0 auto;padding:0 28px}
+
+.site-header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{font-weight:700;letter-spacing:.06em;text-decoration:none;color:#111;font-size:18px}
+.nav a{margin-left:28px;text-decoration:none;color:#222;position:relative;font-weight:600;letter-spacing:.04em}
+.nav a.active::after,.nav a:hover::after{content:"";position:absolute;left:0;right:0;bottom:-10px;height:2px;background:#222}
+
+.site-footer{border-top:1px solid var(--line);margin-top:60px;background:#fff}
+.site-footer .container{padding:22px 28px;color:#555}
+
+/* HERO */
+.hero{position:relative;height:55vh;min-height:380px;overflow:hidden;background:#000}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.65)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,.1), rgba(0,0,0,.25))}
+.hero-title{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-size:clamp(48px,9vw,140px); font-weight:900; letter-spacing:.02em;
+  color:#fff; text-shadow: -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 3px 3px 0 #000;
 }
 
-header {
-  background: #222;
-  padding: 20px 0;
+/* ABOUT */
+.about{display:grid;grid-template-columns:1.2fr .9fr;gap:40px;align-items:center;margin:60px 0}
+.about-title{font-size:clamp(28px,4vw,48px);font-weight:900;line-height:1.05;margin:0 0 14px}
+.lead{font-weight:800;letter-spacing:.08em}
+.about-photo-wrap{display:flex;justify-content:center}
+.about-photo{width:min(420px,100%);aspect-ratio:1/1;object-fit:cover;border-radius:50%;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+
+.divider{border:none;height:1px;background:var(--line);margin:40px 0}
+
+.contact{text-align:center;margin:30px 0 10px}
+.contact h3{font-size:28px;letter-spacing:.08em;margin:0 0 16px}
+.contact-items{display:flex;flex-direction:column;align-items:center;gap:14px}
+.contact-item{display:flex;align-items:center;gap:10px;color:var(--text);text-decoration:none;font-weight:700}
+.contact-item svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8}
+.contact-socials{display:flex;gap:14px;margin-top:4px}
+.icon svg{width:28px;height:28px;fill:currentColor}
+
+/* PAGE TITLES */
+.page-title{text-align:center;font-size:clamp(28px,6vw,64px);margin:40px 0 10px;letter-spacing:.08em}
+
+/* VIDEOS */
+.video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:30px 0 60px}
+.video-card{background:#fff;border:1px solid var(--line);box-shadow:0 2px 12px rgba(0,0,0,.04);border-radius:6px;overflow:hidden}
+.video-card iframe,.video-card video{width:100%;aspect-ratio:16/9;border:0;display:block}
+
+/* PHOTOS */
+.photo-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:26px;margin:26px 0 60px}
+.photo-grid img{width:100%;display:block;border-radius:2px;background:#eee;object-fit:cover;aspect-ratio:3/4}
+
+/* RESPONSIVE */
+@media (max-width: 1000px){
+  .about{grid-template-columns:1fr;gap:20px}
+  .video-grid{grid-template-columns:1fr 1fr}
+  .photo-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width: 640px){
+  .video-grid{grid-template-columns:1fr}
+  .photo-grid{grid-template-columns:repeat(2,1fr)}
 }
 
-nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
-}
-
-nav ul li {
-  margin: 0 15px;
-}
-
-nav ul li a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-nav ul li a.active {
-  border-bottom: 2px solid #ff6600;
-}
-
-main {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 20px;
-}
-
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
-}
-
-.gallery img, .video-item iframe {
-  width: 100%;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-}
-
-footer {
-  text-align: center;
-  padding: 20px;
-  background: #222;
-  color: white;
-  margin-top: 40px;
-}
+/* HERO fallback til billede */
+.hero.hero--image{background:url('assets/hero.jpg') center/cover no-repeat}

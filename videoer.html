@@ -1,34 +1,53 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Videoer</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Videoer · NFCMedia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="index.html">Om mig</a></li>
-        <li><a href="videoer.html" class="active">Videoer</a></li>
-        <li><a href="billeder.html">Billeder</a></li>
-      </ul>
-    </nav>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">NFCMEDIA.DK</a>
+      <nav class="nav">
+        <a href="index.html" class="">HOME</a>
+        <a href="videoer.html" class="active">VIDEOER</a>
+        <a href="billeder.html" class="">BILLEDER</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <h1>Mine videoer</h1>
-    <div class="gallery">
-      <div class="video-item">
-        <iframe width="560" height="315" src="https://www.youtube.com/watch?v=Rr6Sm2m8QLA&t=15s" 
-                title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+  <main class="container">
+    <h1 class="page-title">VIDEOER</h1>
+    <!-- Udskift VIDEO_ID i hver iframe. Se også kommenteret eksempel til lokal mp4 nederst. -->
+    <div class="video-grid">
+      <div class="video-card">
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="YouTube video" loading="lazy" allowfullscreen></iframe>
       </div>
+      <div class="video-card">
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="YouTube video" loading="lazy" allowfullscreen></iframe>
+      </div>
+      <div class="video-card">
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="YouTube video" loading="lazy" allowfullscreen></iframe>
+      </div>
+      <!-- Lokal mp4:
+      <div class="video-card">
+        <video controls>
+          <source src="assets/minvideo.mp4" type="video/mp4">
+        </video>
+      </div> -->
     </div>
   </main>
 
-  <footer>
-    <p>© 2025 [DIT NAVN]</p>
+  <footer class="site-footer">
+    <div class="container">© <span id="year"></span> NFCMedia</div>
   </footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
